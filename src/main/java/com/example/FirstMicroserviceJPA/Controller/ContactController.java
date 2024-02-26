@@ -16,29 +16,29 @@ public class ContactController {
         this.contactService = contactService;
     }
 
-    @GetMapping(value = "show", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "contacts", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Contact> show(){
         return contactService.findAll();
     }
 
-    @GetMapping(value = "show/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "contacts/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Contact show(@PathVariable(name = "id") int id){
         return contactService.showContact(id);
     }
 
-    @PostMapping(value = "addContact",
+    @PostMapping(value = "contacts",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public String addContact(@RequestBody Contact contact){
         return String.valueOf(contactService.addContact(contact));
     }
 
-    @PutMapping(value = "updateContact", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "contacts", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void update(@RequestBody Contact contact){
         contactService.updateContact(contact);
     }
 
-    @DeleteMapping(value = "delete/{id}")
+    @DeleteMapping(value = "contacts/{id}")
     public void deleteById(@PathVariable(name = "id") int id){
         contactService.deleteContact(id);
     }
